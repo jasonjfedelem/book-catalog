@@ -1,1 +1,1 @@
-# book-catalog
+# book-catalog - this is a PWA that I used Claude to write.  Its intended for my daughter to earn money categorizing a friends extensive book collection.  Its not intended for anyone else to use, but feel free to use it as the basis for your ideas. She enters a shelf number, points her phone at the book, and it fills out shelf, title, author.
