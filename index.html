@@ -235,7 +235,7 @@
   <header>
     <h1>Book Catalog</h1>
     <span>Library Scanner</span>
-    <span style="margin-left:auto; font-size:0.62rem; color:#c4a882; opacity:0.8;">Built 2025-06-28 23:15</span>
+    <span style="margin-left:auto; font-size:0.62rem; color:#c4a882; opacity:0.8;">Built 2025-06-28 23:45</span>
   </header>
 
   <div id="shelf-bar">
@@ -279,7 +279,7 @@
 //  CONFIG — fill these in before deploying
 // ─────────────────────────────────────────────
 const CONFIG = {
-  ANTHROPIC_API_KEY:  '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',
+  WORKER_URL: 'https://steep-mouse-6049.jasonfedelem.workers.dev',
   SHEET_ID:           '1qiDrLnZKLwAtkNiZ_Osz76OrJW_E-5pWSUSTb1tfbxs',
   // Service account credentials (paste the full JSON object from your downloaded key file)
   SERVICE_ACCOUNT: {
@@ -352,13 +352,10 @@ captureBtn.addEventListener('click', async () => {
 
 // ── Anthropic OCR ────────────────────────────
 async function extractBookInfo(base64Image) {
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
+  const response = await fetch(CONFIG.WORKER_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': CONFIG.ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true'
     },
     body: JSON.stringify({
       model: 'claude-sonnet-4-6',
